@@ -6,7 +6,7 @@
 		<th>Price</th>
 	</thead>
 	<tbody>
-		<tr ng-repeat="flight in list" ng-click="showMore(flight)">
+		<tr ng-repeat="flight in flights.list" ng-click="showMore(flight)">
 			<td>{{ flight.time | date: 'HH:mm' }}</td>
 			<td>{{ (flight.time + flight.duration) | date: 'HH:mm' }}</td>
 			<td>{{ flight.duration | date: 'H' }} hours, {{ flight.duration | date: 'mm' }} minutes </td>
@@ -21,7 +21,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="from">
-				<h4>City A</h4>
+				<h4>{{ flights.from }}</h4>
 				<p class="text-primary">{{ focused.time | date: 'HH:mm' }}</p>
 			</div>
 			<div class="via">
@@ -30,7 +30,7 @@
 				<i></i>
 			</div>
 			<div class="to">
-				<h4>City B</h4>
+				<h4>{{ flights.to }}</h4>
 				<p class="text-primary">{{ (focused.time + focused.duration) | date: 'HH:mm' }}</p>
 			</div>
 			<button class="btn btn-primary" ng-click="purchase(focused)">Purchase flight for £{{ focused.cost | number: 2}}</button>

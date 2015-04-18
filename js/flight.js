@@ -79,7 +79,7 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 		$scope.cities = [];
 		$scope.session = false;
 		$scope.search = {};
-		$scope.results = [];
+		$scope.results = {};
 		$scope.sort = {
 			"field" : "time",
 			"dir" : "asc"
@@ -88,11 +88,11 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 	init();
 
 	$scope.sortResults = function() {
-		if(!$scope.results || !$scope.results.length) {
+		if(!$scope.results || !$scope.results.list) {
 			return;
 		}
 
-		$scope.results.sort(function(a, b) {
+		$scope.results.list.sort(function(a, b) {
 			a = a[$scope.sort.field];
 			b = b[$scope.sort.field];
 
@@ -149,7 +149,7 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 	$scope.searchFlights = function() {
 		// At least one of the search fields is empty
 		if(!$scope.search.to || !$scope.search.from) {
-			$scope.results = [];
+			$scope.results = {};
 			$scope.searching = false;
 			return;
 		}
@@ -158,7 +158,12 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 		$scope.searching = true;
 		$http[CONFIG.api.search.method](CONFIG.api.search.url.replace("%1", $scope.search.from.id).replace("%2", $scope.search.to.id))
 			.success(function(data) {
-				$scope.results = data;
+				$scope.results = {
+					"list" : data,
+					"from" : $scope.search.from.label,
+					"to" : $scope.search.to.label,
+				};
+				console.log($scope.results);
 				$scope.sortResults();
 			})
 			.error(function() {
@@ -169,12 +174,7 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 			});
 
 	};
-/*
-	$scope.sortBy = function(type) {
-		$scope.sort = type;
-		sortResults();
-	};
-*/
+
 	$scope.sortDirection = function(type) {
 		$scope.sort.dir = type;
 		$scope.sortResults();

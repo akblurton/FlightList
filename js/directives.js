@@ -68,7 +68,7 @@ flightList.directive("loginPanel", ["$http", function($http){
 flightList.directive("searchResults", [function(){
 	return {
 		"scope" : {
-			"list" : "=flights",
+			"flights" : "=",
 		},
 		"restrict" : "E",
 		"templateUrl" : "templates/results.html",
