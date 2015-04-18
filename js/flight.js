@@ -78,7 +78,13 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 	function init() {
 		$scope.cities = [];
 		$scope.session = false;
-		$scope.search = {};
+		$scope.search = {
+			"changes" : {
+				"one" : true,
+				"two" : true,
+				"zero" : true
+			}
+		};
 		$scope.results = {};
 		$scope.sort = {
 			"field" : "time",
@@ -163,7 +169,6 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 					"from" : $scope.search.from.label,
 					"to" : $scope.search.to.label,
 				};
-				console.log($scope.results);
 				$scope.sortResults();
 			})
 			.error(function() {

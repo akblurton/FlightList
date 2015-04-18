@@ -6,11 +6,14 @@
 		<th>Price</th>
 	</thead>
 	<tbody>
-		<tr ng-repeat="flight in flights.list" ng-click="showMore(flight)">
+		<tr ng-repeat="flight in filteredFlights = (flights.list | filter: filterChanges)" ng-click="showMore(flight)">
 			<td>{{ flight.time | date: 'HH:mm' }}</td>
 			<td>{{ (flight.time + flight.duration) | date: 'HH:mm' }}</td>
 			<td>{{ flight.duration | date: 'H' }} hours, {{ flight.duration | date: 'mm' }} minutes </td>
 			<td>&pound;{{ flight.cost | number: 2 }}</td>
+		</tr>
+		<tr ng-hide="filteredFlights.length">
+			<td colspan="4" class="text-warning">No flights available</td>
 		</tr>
 	</tbody>
 </table>

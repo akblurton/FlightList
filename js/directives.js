@@ -69,6 +69,7 @@ flightList.directive("searchResults", [function(){
 	return {
 		"scope" : {
 			"flights" : "=",
+			"filter" : "="
 		},
 		"restrict" : "E",
 		"templateUrl" : "templates/results.html",
@@ -77,6 +78,19 @@ flightList.directive("searchResults", [function(){
 			$scope.showMore = function(flight) {
 				$scope.focused = flight;
 				$scope.show = true;
+			};
+
+			$scope.filterChanges = function(value) {
+				if($scope.filter.zero && value.changes === 0) {
+					return true;
+				}
+				if($scope.filter.one && value.changes === 1) {
+					return true;
+				}
+				if($scope.filter.two && value.changes >= 2) {
+					return true;
+				}
+				return false;
 			};
 
 			$scope.closeMore = function() {

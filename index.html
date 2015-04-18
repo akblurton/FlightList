@@ -41,23 +41,36 @@
 						<h2 class="panel-title">Search Flights</h2>
 					</div>
 					<div class="panel-body">
-						<form class="form-inline">
-							<div class="input-group">
-								<span class="input-group-addon">From:</span>
-								<select ng-change="searchFlights()" class="form-control" ng-options="city as city.label for city in cities | filter: exclusiveFrom" ng-model="search.from">
-									<option value="">Select a City</option>
-								</select>
+						<form class="">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="input-group">
+										<span class="input-group-addon">From:</span>
+										<select ng-change="searchFlights()" class="form-control" ng-options="city as city.label for city in cities | filter: exclusiveFrom" ng-model="search.from">
+											<option value="">Select a City</option>
+										</select>
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon">To:</span>
+										<select ng-change="searchFlights()" class="form-control" ng-options="city as city.label for city in cities | filter: exclusiveTo" ng-model="search.to">
+											<option value="">Select a City</option>
+										</select>
+									</div>
+									
+								</div>
+								<div class="col-md-6">
+									<div class="input-group change-filter">
+										<span class="input-group-addon">Show flights with:</span>
+										<label class="form-control"><input type="checkbox" ng-model="search.changes.zero">0 changes</label>
+										<label class="form-control"><input type="checkbox" ng-model="search.changes.one">1 change</label>
+										<label class="form-control"><input type="checkbox" ng-model="search.changes.two">2+ changes</label>
+									</div>						
+								</div>
 							</div>
-							<div class="input-group">
-								<span class="input-group-addon">To:</span>
-								<select ng-change="searchFlights()" class="form-control" ng-options="city as city.label for city in cities | filter: exclusiveTo" ng-model="search.to">
-									<option value="">Select a City</option>
-								</select>
-							</div>							
 						</form>
 					</div>
 				</div>
-				<div class="panel panel-default" ng-if="results.list" ng-class="{busy: searching}">
+				<div class="panel panel-default search-results" ng-if="results.list" ng-class="{busy: searching}">
 					<div class="panel-heading">
 						<h2 class="panel-title">Search Results</h2>
 					</div>
@@ -76,7 +89,7 @@
 								<button type="button" class="btn btn-default" ng-click="sortDirection('desc')" ng-class="{'btn-primary':sort.dir == 'desc'}">DESC</button>
 							</span>
 						</div>
-						<search-results flights="results">
+						<search-results flights="results" filter="search.changes">
 					</div>
 				</div>
 			</div>
