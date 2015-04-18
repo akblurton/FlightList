@@ -9,6 +9,10 @@ function config() {
 				"url" : "api/login.json",
 				"method" : "get"
 			},
+			"register" : {
+				"url" : "api/register.json",
+				"method" : "get"
+			},
 			"cities": {
 				"url" : "api/cities.json",
 				"method" : "get"

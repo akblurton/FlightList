@@ -12,6 +12,12 @@ flightList.directive("loginPanel", ["$http", function($http){
 				"email" : "",
 				"password" : ""
 			};
+			$scope.newuser = {
+				"email" : "",
+				"password" : "",
+				"confirmpassword" : ""
+			};
+			$scope.registering = false;
 
 			function auth() {
 				// Call authentication method
@@ -31,6 +37,7 @@ flightList.directive("loginPanel", ["$http", function($http){
 					return false;
 				}
 
+				$scope.registerSuccess = false;
 				$scope.error = null;
 
 				// Animate submit button
@@ -57,6 +64,59 @@ flightList.directive("loginPanel", ["$http", function($http){
 						$element.removeClass("working");
 						$element.find("input, button").removeAttr("disabled").eq(1).focus();
 					});
+			};
+
+
+			$scope.register = function() {
+				// Wait until user completes form
+				if(!$scope.newuser.email || !$scope.newuser.password) {
+					return false;
+				}
+				$scope.regError = false;
+				$scope.registerSuccess = false;
+
+				// Validate user profile
+				if($scope.newuser.password != $scope.newuser.passwordConfirm) {
+					$scope.regError = "Passwords do not match";
+				}
+				else if($scope.newuser.password.length < 8) {
+					$scope.regError = "Password must be at least 8 characters long";
+				}
+
+				if($scope.regError) {
+					return;
+				}
+
+				// Animate submit button
+				$element.addClass("working");
+				// Disable form
+				$element.find("input, button").attr("disabled", "disabled");
+
+				// Send register data to API
+				$http[CONFIG.api.register.method](CONFIG.api.register.url, $scope.newuser)
+					.success(function(data) {
+						if(!data || !data.success) {
+							$scope.error = "Could not register right now, please try again later";
+						}
+						else {
+							$scope.isRegistering(false);
+							$scope.user.email = $scope.newuser.email;
+							$scope.registerSuccess = true;
+						}
+					})
+					.error(function() {
+						$scope.regError = "Could not connect to registration server";
+					})
+					.finally(function() {
+						// Reset form after every API call
+						$element.removeClass("working");
+						$element.find("input, button").removeAttr("disabled").eq(1).focus();
+					});
+
+			};
+
+			$scope.isRegistering = function(state) {
+				$scope.registering = state;
 			};
 		},
 		"restrict": "E",
