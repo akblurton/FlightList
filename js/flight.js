@@ -8,6 +8,10 @@ function config() {
 			"login" : {
 				"url" : "api/login.json",
 				"method" : "get"
+			},
+			"cities": {
+				"url" : "api/cities.json",
+				"method" : "get"
 			}
 		}
 	});
@@ -63,4 +67,67 @@ flightList.controller("LoginCtrl", ["$scope", "UserSession", function($scope, Us
 		$scope.session = UserSession.exists();
 	});
 }]);
+
+// Flight Listing controller
+flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($scope, UserSession, $http) {
+	var CONFIG = config();
+
+	$scope.cities = [];
+	$scope.session = false;
+	$scope.search = {};
+
+
+	// Listen for login/logout event
+	$scope.$on("user:login", function() {
+		$scope.session = UserSession.exists();
+		// Fetch list
+		$scope.fetch();
+	});
+
+	$scope.$on("user:logout", function() {
+		$scope.session = UserSession.exists();
+		$scope.cities = null;
+	});
+
+	$scope.exclusiveTo = function(item) {
+		return !$scope.search.from || $scope.search.from.id != item.id;
+	};
+
+	$scope.exclusiveFrom = function(item) {
+		return !$scope.search.to || $scope.search.to.id != item.id;
+	};
+
+	$scope.fetch = function() {
+		$scope.working = true;
+		$scope.error = false;
+		$http[CONFIG.api.cities.method](CONFIG.api.cities.url)
+			.success(function(data) {
+				data.sort(function(a, b) {
+					if(a.label < b.label) {
+						return -1;
+					}
+					if(a.label > b.label) {
+						return 1;
+					}
+					return 0;
+				});
+				$scope.cities = data;
+	
+			})
+			.error(function() {
+				$scope.error = true;
+			})
+			.finally(function() {
+				$scope.working = false;
+			});
+	};
+
+	// Search for available flights
+	$scope.searchFlights = function() {
+		// At least one of the search fields is empty
+		if(!$scope.search.to || !$scope.search.from) {
+
+		}
+	};
+
 }]);

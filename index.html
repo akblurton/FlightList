@@ -23,6 +23,38 @@
 		<div ng-controller="LoginCtrl">
 			<login-panel session="session" on-auth="setSession">
 		</div>
+		<div ng-controller="ListCtrl" id="list">
+			<div ng-if="session">
+				<div class="alert alert-success appear" ng-if="working">
+					Loading Cities...
+					<i class="glyphicon glyphicon-refresh pull-right spinner" aria-hidden="true"></i>
+				</div>
+				<div class="alert alert-danger appear" ng-if="error">
+					Could not load list of cities
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">Search Flights</h2>
+					</div>
+					<div class="panel-body">
+						<form class="form-inline">
+							<div class="input-group">
+								<span class="input-group-addon">From:</span>
+								<select ng-change="searchFlights()" class="form-control" ng-options="city as city.label for city in cities | filter: exclusiveFrom" ng-model="search.from">
+									<option value="">Select a City</option>
+								</select>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">To:</span>
+								<select ng-change="searchFlights()" class="form-control" ng-options="city as city.label for city in cities | filter: exclusiveTo" ng-model="search.to">
+									<option value="">Select a City</option>
+								</select>
+							</div>							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 </body>
 </html>

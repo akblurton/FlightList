@@ -44,13 +44,46 @@ body {
 	}
 }
 
+#list {
+	.alert {
+		position: relative;
+		.spinner {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+		}
+	}
+
+	.input-group {
+		.input-group-addon {
+			width: 75px;
+		}
+		margin-bottom: 10px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	select {
+		width: 200px;
+	}
+}
 
 .spinner {
 	animation: spin 2s linear infinite;
 }
+
+.appear {
+	animation: appear 0.4s ease-in-out backwards;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
-
+	#list {
+		.input-group {
+			margin: 0;
+		}
+	}
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -70,5 +103,17 @@ body {
 
 	100% {
 		transform: translateY(-50%) rotate(360deg);
+	}
+}
+
+@keyframes appear {
+	0% {
+		transform: translateY(-75%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0%);
+		opacity: 1;
 	}
 }
