@@ -1,0 +1,46 @@
+Website Frontend Development Task
+===========
+
+This taks is designed to understand how you deal with a complex problem, while focusing on code quality, maintainability and readability.
+Although the details of the implementation are up to you, please use the following frameworks on your deliverable:
+
+- Javascript / jQuery
+- Bootstrap
+- HTML (of course) that works on most browsers
+
+- Bonus: Use AngularJS
+
+
+Description
+----------------
+
+Create a website with a login/signup functionality that will lead to a user's dashboard. On the dashboard the user will be able to pick two cities and get a list of flights between them.
+
+- The list of cities must have at least 100 cities
+- There must be at least 3 flights between each city
+- The user will be able to sort the flights by price and take off time
+
+- Bonus: the user can choose to display flights with 0, 1 or 2 stops
+- Extra Bonus: add other sorting capabilities
+
+
+
+IMPORTANT - the list of all possible flights (min 3x100x99 = 29700) must exist in a variable and cannot be generated on the fly when the user picks both cities. You should efficiently filter the list.
+
+Define the API calls you need to complete this task, and for the purporse of this test populate them with fake data (that is, a fake list of cities and a fake list of flights.)
+
+
+
+Other considerations
+--------------------
+
+Use of third-party libraries (apart from jQuery / AngularJS and Bootstrap) is permitted, but strongly discouraged.
+
+
+Submission
+----------
+
+You should submit this task throught a git repo on github. Use best practices to commit your code and commit often.
+There is no time limit to this task, but it should be done within a few days since it is received.
+
+Feel free so send any technical questions to xxx@xxx.com

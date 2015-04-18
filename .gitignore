@@ -1,0 +1,6 @@
+# Ignore bower/node installation files
+bower_components/
+node_modules/
+
+# Ignore generated css files
+css/*.css
