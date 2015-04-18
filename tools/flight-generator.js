@@ -32,6 +32,8 @@ cities.forEach(function(cityA) {
 
 		// Between 1 and 10 hours
 		var baseDuration = 3600000 * (1 + Math.floor(Math.random()*10));
+		var baseCost = 400 + 46.45 * (baseDuration/36000000);
+
 		var outputFile = API_DIR + "search/" + cityA.id + "/" + cityB.id + ".json";
 		mkdirp.sync(path.dirname(outputFile));
 
@@ -46,10 +48,14 @@ cities.forEach(function(cityA) {
 			// Duration is a random base value multiplied by the number of stops
 			var duration = baseDuration * (1+(changes / 4));
 
+			// Cost is decreased by an increase in changes
+			var cost = baseCost * (1 - (changes/6));
+
 			flights.push({
 				"time" : time,
 				"duration" : duration,
-				"changes" :  changes
+				"changes" :  changes,
+				"cost" : cost
 			});
 		}
 
