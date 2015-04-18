@@ -1,10 +1,11 @@
 /* global flightList, config */
+// Handle display of login/register panel and sending requests to server
 flightList.directive("loginPanel", ["$http", function($http){
 	var CONFIG = config();
 
 	return {
 		"scope": {
-			"onAuth" : "=",
+			"onAuth" : "=", // Method to fire when user logs in
 			"session" : "="
 		},
 		"controller": function($scope, $element) {
@@ -12,11 +13,13 @@ flightList.directive("loginPanel", ["$http", function($http){
 				"email" : "",
 				"password" : ""
 			};
+
 			$scope.newuser = {
 				"email" : "",
 				"password" : "",
 				"confirmpassword" : ""
 			};
+
 			$scope.registering = false;
 
 			function auth() {
@@ -135,11 +138,14 @@ flightList.directive("searchResults", [function(){
 		"templateUrl" : "templates/results.html",
 		"link" : function($scope) {
 			$scope.focused = $scope.show = false;
+
+			// Assign focused var to given flight to show dialogue
 			$scope.showMore = function(flight) {
 				$scope.focused = flight;
 				$scope.show = true;
 			};
 
+			// Filter list results by number of changes (0, 1, 2+)
 			$scope.filterChanges = function(value) {
 				if($scope.filter.zero && value.changes === 0) {
 					return true;
@@ -153,10 +159,12 @@ flightList.directive("searchResults", [function(){
 				return false;
 			};
 
+			// Close dialogue
 			$scope.closeMore = function() {
 				$scope.show = false;
 			};
 
+			// Faux purchase button
 			$scope.purchase = function() {
 				/* global alert */
 				alert("Coming soon!");
