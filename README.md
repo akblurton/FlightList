@@ -3,6 +3,10 @@
 
 This is an example app for displaying a list of flights from 2 given cities. These can be additionally sorted and filtered by price, duration, departure time and # of changes.
 
+### Flight Details
+
+After receiving your list of flights, you may tap/click on any row to see a slightly more details and visual display of your flight. (UX should be reconsidered for this feature as their is nothing suggesting a clickable presence).
+
 ## API
 
 All data supplied to the application is fake, and is supplied via static .json files as no back-end system is in place.
