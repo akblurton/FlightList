@@ -23,7 +23,6 @@ cities.sort(function(a, b) {
 rimraf.sync(API_DIR + "search/");
 
 // Iterate over cities
-var count = 0;
 cities.forEach(function(cityA) {
 	cities.forEach(function(cityB) {
 		if(cityB.id == cityA.id) {
