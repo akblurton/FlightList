@@ -1,102 +1,402 @@
 [
-    "Paris",
-    "London",
-    "Bangkok",
-    "Singapore",
-    "New York",
-    "Kuala Lumpur",
-    "Hong Kong",
-    "Dubai",
-    "Istanbul",
-    "Rome",
-    "Shanghai",
-    "Los Angeles",
-    "Las Vegas",
-    "Miami",
-    "Toronto",
-    "Barcelona\n",
-    "Dublin",
-    "Amsterdam",
-    "Moscow",
-    "Cairo",
-    "Prague",
-    "Vienna",
-    "Madrid",
-    "San Francisco",
-    "Vancouver",
-    "Budapest",
-    "Rio de Janeiro",
-    "Berlin",
-    "Tokyo",
-    "Mexico City",
-    "Buenos Aires",
-    "St. Petersburg",
-    "Seoul",
-    "Athens",
-    "Jerusalem",
-    "Seattle\n",
-    "Delhi",
-    "Sydney",
-    "Mumbai",
-    "Munich",
-    "Venice",
-    "Florence",
-    "Beijing",
-    "Cape Town",
-    "Washington D.C.",
-    "Montreal\n",
-    "Atlanta",
-    "Boston",
-    "Philadelphia",
-    "Chicago",
-    "San Diego",
-    "Stockholm",
-    "Cancún\n",
-    "Warsaw",
-    "Sharm el-Sheikh",
-    "Dallas",
-    "Hồ Chí Minh",
-    "Milan",
-    "Oslo",
-    "Libson\n",
-    "Punta Cana",
-    "Johannesburg",
-    "Antalya",
-    "Mecca",
-    "Macau",
-    "Pattaya",
-    "Guangzhou",
-    "Kiev",
-    "Shenzhen",
-    "Bucharest",
-    "Taipei",
-    "Orlando",
-    "Brussels",
-    "Chennai",
-    "Marrakesh",
-    "Phuket",
-    "Edirne",
-    "Bali",
-    "Copenhagen",
-    "São Paulo",
-    "Agra",
-    "Varna",
-    "Riyadh",
-    "Jakarta",
-    "Auckland",
-    "Honolulu",
-    "Edinburgh",
-    "Wellington",
-    "New Orleans",
-    "Petra",
-    "Melbourne",
-    "Luxor",
-    "Hà Nội",
-    "Manila",
-    "Houston\n",
-    "Phnom Penh",
-    "Zürich",
-    "Lima",
-    "Santiago",
-    "Bogotá"
+    {
+        "label" : "Paris",
+        "id" : 1
+    },
+    {
+        "label" : "London",
+        "id" : 2
+    },
+    {
+        "label" : "Bangkok",
+        "id" : 3
+    },
+    {
+        "label" : "Singapore",
+        "id" : 4
+    },
+    {
+        "label" : "New York",
+        "id" : 5
+    },
+    {
+        "label" : "Kuala Lumpur",
+        "id" : 6
+    },
+    {
+        "label" : "Hong Kong",
+        "id" : 7
+    },
+    {
+        "label" : "Dubai",
+        "id" : 8
+    },
+    {
+        "label" : "Istanbul",
+        "id" : 9
+    },
+    {
+        "label" : "Rome",
+        "id" : 10
+    },
+    {
+        "label" : "Shanghai",
+        "id" : 11
+    },
+    {
+        "label" : "Los Angeles",
+        "id" : 12
+    },
+    {
+        "label" : "Las Vegas",
+        "id" : 13
+    },
+    {
+        "label" : "Miami",
+        "id" : 14
+    },
+    {
+        "label" : "Toronto",
+        "id" : 15
+    },
+    {
+        "label" : "Barcelona\n",
+        "id" : 16
+    },
+    {
+        "label" : "Dublin",
+        "id" : 17
+    },
+    {
+        "label" : "Amsterdam",
+        "id" : 18
+    },
+    {
+        "label" : "Moscow",
+        "id" : 19
+    },
+    {
+        "label" : "Cairo",
+        "id" : 20
+    },
+    {
+        "label" : "Prague",
+        "id" : 21
+    },
+    {
+        "label" : "Vienna",
+        "id" : 22
+    },
+    {
+        "label" : "Madrid",
+        "id" : 23
+    },
+    {
+        "label" : "San Francisco",
+        "id" : 24
+    },
+    {
+        "label" : "Vancouver",
+        "id" : 25
+    },
+    {
+        "label" : "Budapest",
+        "id" : 26
+    },
+    {
+        "label" : "Rio de Janeiro",
+        "id" : 27
+    },
+    {
+        "label" : "Berlin",
+        "id" : 28
+    },
+    {
+        "label" : "Tokyo",
+        "id" : 29
+    },
+    {
+        "label" : "Mexico City",
+        "id" : 30
+    },
+    {
+        "label" : "Buenos Aires",
+        "id" : 31
+    },
+    {
+        "label" : "St. Petersburg",
+        "id" : 32
+    },
+    {
+        "label" : "Seoul",
+        "id" : 33
+    },
+    {
+        "label" : "Athens",
+        "id" : 34
+    },
+    {
+        "label" : "Jerusalem",
+        "id" : 35
+    },
+    {
+        "label" : "Seattle\n",
+        "id" : 36
+    },
+    {
+        "label" : "Delhi",
+        "id" : 37
+    },
+    {
+        "label" : "Sydney",
+        "id" : 38
+    },
+    {
+        "label" : "Mumbai",
+        "id" : 39
+    },
+    {
+        "label" : "Munich",
+        "id" : 40
+    },
+    {
+        "label" : "Venice",
+        "id" : 41
+    },
+    {
+        "label" : "Florence",
+        "id" : 42
+    },
+    {
+        "label" : "Beijing",
+        "id" : 43
+    },
+    {
+        "label" : "Cape Town",
+        "id" : 44
+    },
+    {
+        "label" : "Washington D.C.",
+        "id" : 45
+    },
+    {
+        "label" : "Montreal\n",
+        "id" : 46
+    },
+    {
+        "label" : "Atlanta",
+        "id" : 47
+    },
+    {
+        "label" : "Boston",
+        "id" : 48
+    },
+    {
+        "label" : "Philadelphia",
+        "id" : 49
+    },
+    {
+        "label" : "Chicago",
+        "id" : 50
+    },
+    {
+        "label" : "San Diego",
+        "id" : 51
+    },
+    {
+        "label" : "Stockholm",
+        "id" : 52
+    },
+    {
+        "label" : "Cancún\n",
+        "id" : 53
+    },
+    {
+        "label" : "Warsaw",
+        "id" : 54
+    },
+    {
+        "label" : "Sharm el-Sheikh",
+        "id" : 55
+    },
+    {
+        "label" : "Dallas",
+        "id" : 56
+    },
+    {
+        "label" : "Hồ Chí Minh",
+        "id" : 57
+    },
+    {
+        "label" : "Milan",
+        "id" : 58
+    },
+    {
+        "label" : "Oslo",
+        "id" : 59
+    },
+    {
+        "label" : "Libson\n",
+        "id" : 60
+    },
+    {
+        "label" : "Punta Cana",
+        "id" : 61
+    },
+    {
+        "label" : "Johannesburg",
+        "id" : 62
+    },
+    {
+        "label" : "Antalya",
+        "id" : 63
+    },
+    {
+        "label" : "Mecca",
+        "id" : 64
+    },
+    {
+        "label" : "Macau",
+        "id" : 65
+    },
+    {
+        "label" : "Pattaya",
+        "id" : 66
+    },
+    {
+        "label" : "Guangzhou",
+        "id" : 67
+    },
+    {
+        "label" : "Kiev",
+        "id" : 68
+    },
+    {
+        "label" : "Shenzhen",
+        "id" : 69
+    },
+    {
+        "label" : "Bucharest",
+        "id" : 70
+    },
+    {
+        "label" : "Taipei",
+        "id" : 71
+    },
+    {
+        "label" : "Orlando",
+        "id" : 72
+    },
+    {
+        "label" : "Brussels",
+        "id" : 73
+    },
+    {
+        "label" : "Chennai",
+        "id" : 74
+    },
+    {
+        "label" : "Marrakesh",
+        "id" : 75
+    },
+    {
+        "label" : "Phuket",
+        "id" : 76
+    },
+    {
+        "label" : "Edirne",
+        "id" : 77
+    },
+    {
+        "label" : "Bali",
+        "id" : 78
+    },
+    {
+        "label" : "Copenhagen",
+        "id" : 79
+    },
+    {
+        "label" : "São Paulo",
+        "id" : 80
+    },
+    {
+        "label" : "Agra",
+        "id" : 81
+    },
+    {
+        "label" : "Varna",
+        "id" : 82
+    },
+    {
+        "label" : "Riyadh",
+        "id" : 83
+    },
+    {
+        "label" : "Jakarta",
+        "id" : 84
+    },
+    {
+        "label" : "Auckland",
+        "id" : 85
+    },
+    {
+        "label" : "Honolulu",
+        "id" : 86
+    },
+    {
+        "label" : "Edinburgh",
+        "id" : 87
+    },
+    {
+        "label" : "Wellington",
+        "id" : 88
+    },
+    {
+        "label" : "New Orleans",
+        "id" : 89
+    },
+    {
+        "label" : "Petra",
+        "id" : 90
+    },
+    {
+        "label" : "Melbourne",
+        "id" : 91
+    },
+    {
+        "label" : "Luxor",
+        "id" : 92
+    },
+    {
+        "label" : "Hà Nội",
+        "id" : 93
+    },
+    {
+        "label" : "Manila",
+        "id" : 94
+    },
+    {
+        "label" : "Houston\n",
+        "id" : 95
+    },
+    {
+        "label" : "Phnom Penh",
+        "id" : 96
+    },
+    {
+        "label" : "Zürich",
+        "id" : 97
+    },
+    {
+        "label" : "Lima",
+        "id" : 98
+    },
+    {
+        "label" : "Santiago",
+        "id" : 99
+    },
+    {
+        "label" : "Bogotá",
+        "id" : 100
+    }
 ]
