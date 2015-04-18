@@ -39,6 +39,17 @@ flightList.factory("UserSession", ["$rootScope", function($rootScope){
 	return userSession;
 }]);
 
+// Navbar event controller
+flightList.controller("NavCtrl", ["$scope", "UserSession", function($scope, UserSession) {
+	$scope.session = false;
+	$scope.logout = function() {
+		UserSession.destroy();
+	};
+	$scope.$on("user:login", function() {
+		$scope.session = true;
+	});
+}]);
+
 // Login Controller
 flightList.controller("LoginCtrl", ["$scope", "UserSession", function($scope, UserSession) {
 	$scope.session = UserSession.exists();
@@ -47,4 +58,9 @@ flightList.controller("LoginCtrl", ["$scope", "UserSession", function($scope, Us
     $scope.setSession = function() {
     	$scope.session = UserSession.create();
     };
+
+    $scope.$on("user:logout", function() {
+		$scope.session = UserSession.exists();
+	});
+}]);
 }]);
