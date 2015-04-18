@@ -79,6 +79,23 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 	$scope.session = false;
 	$scope.search = {};
 	$scope.results = [];
+	$scope.sort = {
+		"field" : "time",
+		"dir" : "asc"
+	};
+
+	$scope.sortResults = function() {
+		if(!$scope.results || !$scope.results.length) {
+			return;
+		}
+
+		$scope.results.sort(function(a, b) {
+			a = a[$scope.sort.field];
+			b = b[$scope.sort.field];
+
+			return (a-b)*($scope.sort.dir == "asc" ? 1 : -1);
+		});
+	};
 
 
 	// Listen for login/logout event
@@ -140,6 +157,7 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 		$http[CONFIG.api.search.method](CONFIG.api.search.url.replace("%1", $scope.search.from.id).replace("%2", $scope.search.to.id))
 			.success(function(data) {
 				$scope.results = data;
+				$scope.sortResults();
 			})
 			.error(function() {
 
@@ -148,6 +166,16 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 				$scope.searching = false;
 			});
 
+	};
+/*
+	$scope.sortBy = function(type) {
+		$scope.sort = type;
+		sortResults();
+	};
+*/
+	$scope.sortDirection = function(type) {
+		$scope.sort.dir = type;
+		$scope.sortResults();
 	};
 
 }]);

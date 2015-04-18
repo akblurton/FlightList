@@ -57,11 +57,25 @@
 						</form>
 					</div>
 				</div>
-				<div class="panel panel-default" ng-if="results.length">
+				<div class="panel panel-default" ng-if="results.length" ng-class="{busy: searching}">
 					<div class="panel-heading">
 						<h2 class="panel-title">Search Results</h2>
 					</div>
 					<div class="panel-body">
+						<div class="pull-right ordering">
+							<p class="input-group input-group-sm sort">
+								<span class="input-group-addon">Sort By:</span>
+								<select class="form-control" ng-change="sortResults()" ng-model="sort.field">
+									<option value="time">Departure</option>
+									<option value="duration">Duration</option>
+									<option value="cost">Price</option>
+								</select>
+							</p>
+							<span class="btn-group btn-group-sm sort-direction" role="group" aria-label="...">
+								<button type="button" class="btn btn-default" ng-click="sortDirection('asc')" ng-class="{'btn-primary':sort.dir == 'asc'}">ASC</button>
+								<button type="button" class="btn btn-default" ng-click="sortDirection('desc')" ng-class="{'btn-primary':sort.dir == 'desc'}">DESC</button>
+							</span>
+						</div>
 						<search-results flights="results">
 					</div>
 				</div>

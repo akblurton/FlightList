@@ -3,16 +3,37 @@
 		<th>Departure</th>
 		<th>Arrival</th>
 		<th>Duration</th>
-		<th>Changes</th>
 		<th>Price</th>
 	</thead>
 	<tbody>
-		<tr ng-repeat="flight in list">
+		<tr ng-repeat="flight in list" ng-click="showMore(flight)">
 			<td>{{ flight.time | date: 'HH:mm' }}</td>
 			<td>{{ (flight.time + flight.duration) | date: 'HH:mm' }}</td>
 			<td>{{ flight.duration | date: 'H' }} hours, {{ flight.duration | date: 'mm' }} minutes </td>
-			<td>{{ flight.changes }}</td>
 			<td>&pound;{{ flight.cost | number: 2 }}</td>
 		</tr>
 	</tbody>
 </table>
+<div class="overlay" ng-class="{on: show}">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="panel-title">Flight Details <a ng-click="closeMore()" class="glyphicon glyphicon-remove-sign pull-right"></a></h2>					
+		</div>
+		<div class="panel-body">
+			<div class="from">
+				<h4>City A</h4>
+				<p class="text-primary">{{ focused.time | date: 'HH:mm' }}</p>
+			</div>
+			<div class="via">
+				<p>{{ focused.duration | date: 'H' }} hours, {{ focused.duration | date: 'mm' }} minutes </p>
+				<strong>{{ focused.changes }} Change(s)</strong>
+				<i></i>
+			</div>
+			<div class="to">
+				<h4>City B</h4>
+				<p class="text-primary">{{ (focused.time + focused.duration) | date: 'HH:mm' }}</p>
+			</div>
+			<button class="btn btn-primary" ng-click="purchase(focused)">Purchase flight for £{{ focused.cost | number: 2}}</button>
+		</div>
+	</div>
+</div>

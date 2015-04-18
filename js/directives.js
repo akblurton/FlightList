@@ -68,9 +68,25 @@ flightList.directive("loginPanel", ["$http", function($http){
 flightList.directive("searchResults", [function(){
 	return {
 		"scope" : {
-			"list" : "=flights"
+			"list" : "=flights",
 		},
 		"restrict" : "E",
 		"templateUrl" : "templates/results.html",
+		"link" : function($scope) {
+			$scope.focused = $scope.show = false;
+			$scope.showMore = function(flight) {
+				$scope.focused = flight;
+				$scope.show = true;
+			};
+
+			$scope.closeMore = function() {
+				$scope.show = false;
+			};
+
+			$scope.purchase = function() {
+				/* global alert */
+				alert("Coming soon!");
+			};
+		}
 	};
 }]);
