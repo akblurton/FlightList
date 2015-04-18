@@ -21,7 +21,7 @@
 	</nav>
 	<main class="container">
 		<div ng-controller="LoginCtrl">
-			<login-panel on-auth="showList">
+			<login-panel session="session" on-auth="setSession">
 		</div>
 	</main>
 </body>

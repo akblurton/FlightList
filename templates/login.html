@@ -1,4 +1,4 @@
-<div id="login" class="panel panel-primary">
+<div id="login" class="panel panel-primary" ng-if="!session">
     <div class="panel-heading">
         <h2 class="panel-title">Login</h2>
     </div>
@@ -7,7 +7,7 @@
         	<p role="alert" class="alert alert-danger" ng-if="error">{{ error }}</p>
             <input ng-model="user.email" type="email" name="email" id="email" placeholder="Email Address" class="form-control">
             <input ng-model="user.password" type="password" name="password" id="password" placeholder="Password" class="form-control">
-            <button class="btn btn-primary pull-right">
+            <button class="btn btn-primary pull-right spinner">
             	<i class="glyphicon glyphicon-refresh" aria-hidden="true"></i>
             	Login
             </button>

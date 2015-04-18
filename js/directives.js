@@ -1,9 +1,11 @@
 /* global flightList, config */
 flightList.directive("loginPanel", ["$http", function($http){
+	var CONFIG = config();
 
 	return {
 		scope: {
-			"onAuth" : "="
+			"onAuth" : "=",
+			"session" : "="
 		},
 		controller: function($scope, $element) {
 			$scope.user = {
@@ -11,10 +13,7 @@ flightList.directive("loginPanel", ["$http", function($http){
 				"password" : ""
 			};
 
-			function login() {
-				window.localStorage.setItem("flightlist:session", "1");
-				$element.addClass("off");
-
+			function auth() {
 				// Call authentication method
 				if($scope.onAuth && $scope.onAuth.call) {
 					$scope.onAuth();
@@ -22,9 +21,8 @@ flightList.directive("loginPanel", ["$http", function($http){
 			}
 
 			// Check if user is already logged in
-			var status = window.localStorage.getItem("flightlist:session");
-			if(status == "1") {
-				login();
+			if($scope.session) {
+				auth();
 			}
 
 			$scope.attempt = function() {
@@ -41,13 +39,13 @@ flightList.directive("loginPanel", ["$http", function($http){
 				$element.find("input, button").attr("disabled", "disabled");
 
 				// Send login data to API
-				$http[config().api.method](config().api.login, $scope.user)
+				$http[CONFIG.api.login.method](CONFIG.api.login.url, $scope.user)
 					.success(function(data) {
 						if(!data || !data.success) {
 							$scope.error = "Invalid login credentials provided";
 						}
 						else {
-							login();
+							auth();
 						}
 					})
 					.error(function() {
@@ -62,13 +60,6 @@ flightList.directive("loginPanel", ["$http", function($http){
 			};
 		},
 		restrict: "E",
-		// template: '',
 		templateUrl: "templates/login.html",
-		// replace: true,
-		// transclude: true,
-		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-		link: function($scope, iElm, iAttrs, controller) {
-
-		}
 	};
 }]);
