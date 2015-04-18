@@ -12,6 +12,10 @@ function config() {
 			"cities": {
 				"url" : "api/cities.json",
 				"method" : "get"
+			},
+			"search" : {
+				"method" : "get",
+				"url" : "api/search/%1/%2.json"
 			}
 		}
 	});
@@ -19,7 +23,6 @@ function config() {
 
 // Global App Module
 var flightList = angular.module("FlightList", []);
-
 
 // User Session global service
 flightList.factory("UserSession", ["$rootScope", function($rootScope){
@@ -75,6 +78,7 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 	$scope.cities = [];
 	$scope.session = false;
 	$scope.search = {};
+	$scope.results = [];
 
 
 	// Listen for login/logout event
@@ -126,8 +130,24 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 	$scope.searchFlights = function() {
 		// At least one of the search fields is empty
 		if(!$scope.search.to || !$scope.search.from) {
-
+			$scope.results = [];
+			$scope.searching = false;
+			return;
 		}
+
+		// Begin search
+		$scope.searching = true;
+		$http[CONFIG.api.search.method](CONFIG.api.search.url.replace("%1", $scope.search.from.id).replace("%2", $scope.search.to.id))
+			.success(function() {
+
+			})
+			.error(function() {
+
+			})
+			.finally(function() {
+				$scope.searching = false;
+			});
+
 	};
 
 }]);

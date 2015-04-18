@@ -29,6 +29,10 @@
 					Loading Cities...
 					<i class="glyphicon glyphicon-refresh pull-right spinner" aria-hidden="true"></i>
 				</div>
+				<div class="alert alert-info appear" ng-if="searching">
+					Searching for flights...
+					<i class="glyphicon glyphicon-refresh pull-right spinner" aria-hidden="true"></i>
+				</div>
 				<div class="alert alert-danger appear" ng-if="error">
 					Could not load list of cities
 				</div>
@@ -51,6 +55,11 @@
 								</select>
 							</div>							
 						</form>
+					</div>
+				</div>
+				<div class="panel panel-default" ng-if="results.length">
+					<div class="panel-heading">
+						<h2 class="panel-title" >Search Results</h2>
 					</div>
 				</div>
 			</div>
