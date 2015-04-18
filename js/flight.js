@@ -28,7 +28,7 @@ flightList.factory("UserSession", ["$rootScope", function($rootScope){
 	};
 
 	userSession.destroy = function() {
-		window.localStorage.removeItem("flightList:session");
+		window.localStorage.removeItem("flightlist:session");
 		$rootScope.$broadcast("user:logout");
 	};
 
