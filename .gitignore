@@ -4,3 +4,7 @@ node_modules/
 
 # Ignore generated css files
 css/*.css
+
+
+# Ignore generated API
+api/search
