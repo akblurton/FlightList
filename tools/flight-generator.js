@@ -53,9 +53,9 @@ cities.forEach(function(cityA) {
 			});
 		}
 
-		fs.writeFile(outputFile, JSON.stringify(flights, null, 4), function() {
-
-		});
+		fs.writeFileSync(outputFile, JSON.stringify(flights, null, 4));
 
 	});
+
+	console.log("Wrote flights from ID:", cityA.id);
 });
