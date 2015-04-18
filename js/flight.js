@@ -75,14 +75,17 @@ flightList.controller("LoginCtrl", ["$scope", "UserSession", function($scope, Us
 flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($scope, UserSession, $http) {
 	var CONFIG = config();
 
-	$scope.cities = [];
-	$scope.session = false;
-	$scope.search = {};
-	$scope.results = [];
-	$scope.sort = {
-		"field" : "time",
-		"dir" : "asc"
-	};
+	function init() {
+		$scope.cities = [];
+		$scope.session = false;
+		$scope.search = {};
+		$scope.results = [];
+		$scope.sort = {
+			"field" : "time",
+			"dir" : "asc"
+		};
+	}
+	init();
 
 	$scope.sortResults = function() {
 		if(!$scope.results || !$scope.results.length) {
@@ -106,8 +109,7 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 	});
 
 	$scope.$on("user:logout", function() {
-		$scope.session = UserSession.exists();
-		$scope.cities = null;
+		init();
 	});
 
 	$scope.exclusiveTo = function(item) {
