@@ -3,11 +3,11 @@ flightList.directive("loginPanel", ["$http", function($http){
 	var CONFIG = config();
 
 	return {
-		scope: {
+		"scope": {
 			"onAuth" : "=",
 			"session" : "="
 		},
-		controller: function($scope, $element) {
+		"controller": function($scope, $element) {
 			$scope.user = {
 				"email" : "",
 				"password" : ""
@@ -59,7 +59,18 @@ flightList.directive("loginPanel", ["$http", function($http){
 					});
 			};
 		},
-		restrict: "E",
-		templateUrl: "templates/login.html",
+		"restrict": "E",
+		"templateUrl": "templates/login.html",
+	};
+}]);
+
+// flight list renderer
+flightList.directive("searchResults", [function(){
+	return {
+		"scope" : {
+			"list" : "=flights"
+		},
+		"restrict" : "E",
+		"templateUrl" : "templates/results.html",
 	};
 }]);

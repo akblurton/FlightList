@@ -1,0 +1,18 @@
+<table class="table table-striped table-hover">
+	<thead>
+		<th>Departure</th>
+		<th>Arrival</th>
+		<th>Duration</th>
+		<th>Changes</th>
+		<th>Price</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="flight in list">
+			<td>{{ flight.time | date: 'HH:mm' }}</td>
+			<td>{{ (flight.time + flight.duration) | date: 'HH:mm' }}</td>
+			<td>{{ flight.duration | date: 'H' }} hours, {{ flight.duration | date: 'mm' }} minutes </td>
+			<td>{{ flight.changes }}</td>
+			<td>&pound;{{ flight.cost | number: 2 }}</td>
+		</tr>
+	</tbody>
+</table>

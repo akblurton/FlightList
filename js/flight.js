@@ -138,8 +138,8 @@ flightList.controller("ListCtrl", ["$scope", "UserSession", "$http", function($s
 		// Begin search
 		$scope.searching = true;
 		$http[CONFIG.api.search.method](CONFIG.api.search.url.replace("%1", $scope.search.from.id).replace("%2", $scope.search.to.id))
-			.success(function() {
-
+			.success(function(data) {
+				$scope.results = data;
 			})
 			.error(function() {
 
