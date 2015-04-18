@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="FlightList">
+<html lang="en" ng-app="FlightList">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>FlightList</title>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/flight.css">
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="js/flight.js"></script>
+	<script src="js/directives.js"></script>
 </head>
 <body>
-	
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="div container">
+			<a href="#" class="navbar-brand">FlightList</a>
+			<button type="button" ng-if="user" class="btn btn-default navbar-btn navbar-right">Log out</button>
+		</div>
+	</nav>
+	<main class="container">
+		<div id="login" ng-controller="LoginCtrl">
+			<login-panel on-auth="showList">
+		</div>
+	</main>
 </body>
 </html>
