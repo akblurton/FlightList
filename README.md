@@ -11,7 +11,7 @@ After receiving your list of flights, you may tap/click on any row to see a slig
 
 All data supplied to the application is fake, and is supplied via static .json files as no back-end system is in place.
 
-### A note on api/search/<id>/<id>.json
+### A note on api/search/&lt;id&gt;/&lt;id&gt;.json
 
 All search API results are generated using `tools/flight-generator.js`. This will produce 100x99 files for every city combination. For each combination a random 3-6 flights are generated.
 
